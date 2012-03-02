@@ -3,8 +3,8 @@
     $("#Scan").click(function () {
         jQuery.support.cors = true;
         $.ajax({
-            type: "GET",
-            url: "http://localhost:2995/Service.svc/Scan",
+            type: "POST",
+            url: "http://localhost:2996/Service.svc/Scan",
             data: "{}",
             dataType: "json",
             error: function (xhr, status) {

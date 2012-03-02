@@ -9,6 +9,7 @@ using System.Text;
 
 namespace WcfService
 {
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, UseSynchronizationContext = false)]
     [ServiceContract(Namespace = "")]
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class Service
@@ -18,14 +19,16 @@ namespace WcfService
         //     add [WebGet(ResponseFormat=WebMessageFormat.Xml)],
         //     and include the following line in the operation body:
         //         WebOperationContext.Current.OutgoingResponse.ContentType = "text/xml";
-        [WebGet]
+        [WebInvoke]
         [OperationContract]
         public String Scan()
         {
+            Request(this, EventArgs.Empty);
             // Add your operation implementation here
-            return "hi";
+            return DateTime.Now.Ticks.ToString();
         }
 
         // Add more operations here and mark them with [OperationContract]
+        public event EventHandler Request = delegate { };
     }
 }
