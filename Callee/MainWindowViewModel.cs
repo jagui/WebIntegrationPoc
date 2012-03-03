@@ -22,17 +22,19 @@ namespace Callee
         {
             _log = log;
             _service = new Service();
-            _service.Request += HandleServiceRequest;
+            _service.HandleRequest += HandleServiceRequest;
             _serviceHost = new ServiceHost(_service, _baseAddress);
             _serviceHost.Open();
             _log.Log(String.Format("The service is ready at {0}", _baseAddress));
         }
 
-        void HandleServiceRequest(object sender, EventArgs e)
+        string HandleServiceRequest(Service service, string s)
         {
-            _log.Log("Serving request");
+            _log.Log(String.Format("Serving request {0}", s));
             CountDownTo(SecondsProcessing);
-            _log.Log("Returning");
+            var retval = DateTime.Now.Ticks.ToString(CultureInfo.InvariantCulture);
+            _log.Log(String.Format("Returning {0}", retval));
+            return retval;
         }
 
         private void CountDownTo(int seconds)

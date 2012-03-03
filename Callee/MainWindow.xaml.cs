@@ -20,12 +20,19 @@ namespace Callee
         {
             if (LogBox.Dispatcher.CheckAccess())
             {
-                LogBox.AppendText(log);
+                LogLine(log);
             }
             else
             {
                 LogBox.Dispatcher.Invoke(new Action(() => Log(log)));
             }
+        }
+
+        private void LogLine(String log)
+        {
+            LogBox.AppendText(log);
+            LogBox.AppendText(Environment.NewLine);
+            LogBox.ScrollToEnd();
         }
     }
 }

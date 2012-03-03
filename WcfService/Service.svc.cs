@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -21,14 +22,12 @@ namespace WcfService
         //         WebOperationContext.Current.OutgoingResponse.ContentType = "text/xml";
         [WebInvoke]
         [OperationContract]
-        public String Scan()
+        public String Scan(String context)
         {
-            Request(this, EventArgs.Empty);
-            // Add your operation implementation here
-            return DateTime.Now.Ticks.ToString();
+            return HandleRequest(this, context);
         }
 
         // Add more operations here and mark them with [OperationContract]
-        public event EventHandler Request = delegate { };
+        public Func<Service, String, String> HandleRequest = delegate { return String.Empty; };
     }
 }
