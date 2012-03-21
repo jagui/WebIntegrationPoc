@@ -13,9 +13,7 @@ namespace Callee
     public class MainWindowViewModel : IDisposable
     {
         private readonly ILog _log;
-        private const string BaseUrl = "http://localhost:2996/Service.svc";
         private const int SecondsProcessing = 5;
-        private readonly Uri _baseAddress = new Uri(BaseUrl);
         private readonly ServiceHost _serviceHost;
         private readonly Service _service;
         public MainWindowViewModel(ILog log)
@@ -23,9 +21,9 @@ namespace Callee
             _log = log;
             _service = new Service();
             _service.HandleRequest += HandleServiceRequest;
-            _serviceHost = new ServiceHost(_service, _baseAddress);
+            _serviceHost = new ServiceHost(_service);
             _serviceHost.Open();
-            _log.Log(String.Format("The service is ready at {0}", _baseAddress));
+            _log.Log(String.Format("The service is ready at {0}", _serviceHost.BaseAddresses.First()));
         }
 
         string HandleServiceRequest(Service service, string s)

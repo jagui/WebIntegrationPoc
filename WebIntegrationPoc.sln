@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Callee", "Callee\Callee.csp
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Caller", "Caller\", "{2DE95E81-3FC3-4E1F-8BCE-36FA73C4580F}"
 	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv3.5"
 		Debug.AspNetCompiler.VirtualPath = "/Caller"
 		Debug.AspNetCompiler.PhysicalPath = "Caller\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Caller\"
