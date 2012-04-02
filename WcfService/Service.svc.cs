@@ -7,21 +7,26 @@ using System.ServiceModel;
 using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
 using System.Text;
+using Microsoft.Ajax.Samples;
 
 namespace WcfService
 {
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, UseSynchronizationContext = false)]
-    [ServiceContract(Namespace = "")]
-    [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
-    public class Service
+
+    //Service contract
+    [ServiceContract]
+    public interface IScanService
     {
-        // To use HTTP GET, add [WebGet] attribute. (Default ResponseFormat is WebMessageFormat.Json)
-        // To create an operation that returns XML,
-        //     add [WebGet(ResponseFormat=WebMessageFormat.Xml)],
-        //     and include the following line in the operation body:
-        //         WebOperationContext.Current.OutgoingResponse.ContentType = "text/xml";
-        [WebInvoke]
         [OperationContract]
+        [WebGet(ResponseFormat = WebMessageFormat.Json)]
+        [JSONPBehavior(callback = "callback")]
+        String Scan(String context);
+    }
+
+
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, UseSynchronizationContext = false)]
+    [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
+    public class Service : IScanService
+    {
         public String Scan(String context)
         {
             return HandleRequest(this, context);
