@@ -3,10 +3,11 @@
 
     // Add the page method call as an onclick handler for the div.
     $("#Scan").click(function () {
+        var url = 'http://localhost:2996/Service.svc/Scan?context='+$("#Context").val()+'&callback=?';
         var json = '{"context":"' + $("#Context").val() + '"}';
          $.ajax({
             type: "POST",
-            url: "http://localhost:2996/Service.svc/Scan"+"?callback=?",
+            url:url,
             data: json,
             contentType: "application/json;charset=utf-8",
             dataType: "jsonp",
