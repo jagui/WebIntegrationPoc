@@ -1,13 +1,11 @@
 using System;
 using System.ServiceModel;
-using System.ServiceModel.Web;
 using System.ServiceModel.Channels;
-using System.ServiceModel.Dispatcher;
-using System.ServiceModel.Configuration;
 using System.ServiceModel.Description;
+using System.ServiceModel.Dispatcher;
+using System.ServiceModel.Web;
 
-
-namespace Microsoft.Ajax.Samples
+namespace CalleeLib
 {
 
     public class JSONPBehavior : Attribute, IOperationBehavior

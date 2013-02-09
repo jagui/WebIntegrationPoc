@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.ServiceModel;
-using System.Text;
 using System.Threading;
-using WcfService;
+using CalleeLib;
 
 namespace Callee
 {

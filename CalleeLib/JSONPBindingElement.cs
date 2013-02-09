@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System;
 using System.ServiceModel.Channels;
 
-
-
-namespace Microsoft.Ajax.Samples
+namespace CalleeLib
 {
     public class JSONPBindingElement : MessageEncodingBindingElement
     {

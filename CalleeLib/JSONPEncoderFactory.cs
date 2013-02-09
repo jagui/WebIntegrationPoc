@@ -1,15 +1,10 @@
-﻿using System;
-using System.Text;
-using System.ServiceModel.Channels;
+using System;
 using System.IO;
-using System.Xml;
 using System.Runtime.Serialization.Json;
-using System.ServiceModel.Dispatcher;
-using System.ServiceModel.Configuration;
-using System.ServiceModel.Description;
+using System.ServiceModel.Channels;
+using System.Xml;
 
-
-namespace Microsoft.Ajax.Samples
+namespace CalleeLib
 {
     public class JSONPMessageProperty : IMessageProperty
     {
